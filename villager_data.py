@@ -62,34 +62,51 @@ def all_names_by_hobby(filename):
     # TODO: replace this with your code
     
     file = open(filename)
-    #hobbies = [fitness[], education[], nature[], play[], fashion[], music[]]
-    hobbies = [] 
+    #hobbies = ['Education', 'Fitness', 'Fashion', 'Nature', 'Play', 'Music']
+    hobbies = []
+
+    education = []
+    fitness = []
+    fashion = []
+    nature = []
+    play = []
+    music = []
+
+    names = []
+
     for data in file:
         entry = data.split("|")
         hobby = entry[3]
-        hobbies.append(hobby)
-    
-    hobbies = set(hobbies)
-    hobbies_list = []
-    for hobby in hobbies:
-        hobby = []
-        hobbies_list.append(hobby)
-    
-    print(hobbies_list)
-    
+        name = entry[0]
+        if hobby not in hobbies:
+            hobbies.append(hobby)
+            if name in education:
+                name.append(education)
+            elif name in fitness:
+                name.append(fitness)
+            elif name in fashion:
+                name.append(fashion)
+            elif name in nature:
+                name.append(nature)
+            elif name in play:
+                name.append(play)
+            elif name in music:
+                name.append(music)
 
-        # hobby = entry[3]
+    education.append(hobbies[0])
+    fitness.append(hobbies[1])
+    fashion.append(hobbies[2])
+    nature.append(hobbies[3])
+    play.append(hobbies[4])
+    music.append(hobbies[5])
+
+    # print(education)
+    # print(fitness)
+    # print(fashion)
+    # print(nature)
+    # print(play)
+    # print(music)
         
-        # hobbies.append(list(hobby))  
-
-        # if entry[3] == "Fitness":
-        #     hobbies[0].append(entry[0]) 
-
-       
-            
-    
-
-    
 
 
 def all_data(filename):
@@ -148,4 +165,4 @@ def find_likeminded_villagers(filename, villager_name):
 
 #print(all_species("villagers.csv"))
 #print(get_villagers_by_species("villagers.csv", 'Dog'))
-print(all_names_by_hobby("villagers.csv"))
+##print(all_names_by_hobby("villagers.csv"))  
