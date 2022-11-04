@@ -65,47 +65,15 @@ def all_names_by_hobby(filename):
     #hobbies = ['Education', 'Fitness', 'Fashion', 'Nature', 'Play', 'Music']
     hobbies = []
 
-    education = []
-    fitness = []
-    fashion = []
-    nature = []
-    play = []
-    music = []
-
-    names = []
-
     for data in file:
         entry = data.split("|")
         hobby = entry[3]
         name = entry[0]
         if hobby not in hobbies:
             hobbies.append(hobby)
-            if name in education:
-                name.append(education)
-            elif name in fitness:
-                name.append(fitness)
-            elif name in fashion:
-                name.append(fashion)
-            elif name in nature:
-                name.append(nature)
-            elif name in play:
-                name.append(play)
-            elif name in music:
-                name.append(music)
 
-    education.append(hobbies[0])
-    fitness.append(hobbies[1])
-    fashion.append(hobbies[2])
-    nature.append(hobbies[3])
-    play.append(hobbies[4])
-    music.append(hobbies[5])
-
-    # print(education)
-    # print(fitness)
-    # print(fashion)
-    # print(nature)
-    # print(play)
-    # print(music)
+        ### come back to ### 
+            
         
 
 
@@ -125,8 +93,15 @@ def all_data(filename):
     all_data = []
 
     # TODO: replace this with your code
+    file = open(filename)
+    tuple_list = []
 
-    return all_data
+    for data in file:
+        entry = data.split("|")
+        tuple = set(entry)
+        tuple_list.append(tuple)
+    
+    return tuple_list 
 
 
 def find_motto(filename, villager_name):
@@ -142,9 +117,15 @@ def find_motto(filename, villager_name):
     Return:
         - str: the villager's motto or None
     """
+    file = open(filename)
 
-    # TODO: replace this with your code
-
+    for data in file:
+        entry = data.split("|")
+        if entry[0] == villager_name:
+            print(entry[4])   
+        elif entry[0] != villager_name:
+            print(f'This villager does not exist!')
+            return None 
 
 def find_likeminded_villagers(filename, villager_name):
     """Return a set of villagers with the same personality as the given villager.
@@ -165,4 +146,6 @@ def find_likeminded_villagers(filename, villager_name):
 
 #print(all_species("villagers.csv"))
 #print(get_villagers_by_species("villagers.csv", 'Dog'))
-##print(all_names_by_hobby("villagers.csv"))  
+###print(all_names_by_hobby("villagers.csv"))  
+#print(all_data('villagers.csv')) 
+#print(find_motto('villagers.csv', 'Ismarji'))
