@@ -58,21 +58,42 @@ def all_names_by_hobby(filename):
     Return:
         - list[list[str]]: a list of lists containing names
     """
-
-    # TODO: replace this with your code
     
     file = open(filename)
-    #hobbies = ['Education', 'Fitness', 'Fashion', 'Nature', 'Play', 'Music']
-    hobbies = []
+
+    fitness = []
+    nature = []
+    education = []
+    music = []
+    fashion = []
+    play = []
 
     for data in file:
         entry = data.split("|")
         hobby = entry[3]
         name = entry[0]
-        if hobby not in hobbies:
-            hobbies.append(hobby)
+        
+        if hobby == 'Fitness':
+            fitness.append(name)
+        elif hobby == "Nature":
+            nature.append(name)
+        elif hobby == "Education":
+            education.append(name)
+        elif hobby == "Music":
+            music.append(name)
+        elif hobby == "Fashion":
+            fashion.append(name)
+        elif hobby == "Play":
+            play.append(name)
 
-        ### come back to ### 
+    return [ 
+        sorted(fitness),
+        sorted(nature),
+        sorted(education),
+        sorted(music),
+        sorted(fashion),
+        sorted(play),
+    ]
             
         
 
@@ -141,11 +162,31 @@ def find_likeminded_villagers(filename, villager_name):
         >>> find_likeminded_villagers('villagers.csv', 'Wendy')
         {'Bella', ..., 'Carmen'}
     """
+    file = open(filename)
+    personality = []
+    likeminded = set()
 
-    # TODO: replace this with your code
+    for data in file:
+        entry = data.split("|")
+        if entry[0] == villager_name:
+            personality.append(entry[2])
+            
+            for i in range(len(data)): 
+                if i < 4 and entry[2] in personality:
+                    likeminded.add(entry[0])
+                    
+    
+    return likeminded
+
+
+
+
+
+
 
 #print(all_species("villagers.csv"))
 #print(get_villagers_by_species("villagers.csv", 'Dog'))
-###print(all_names_by_hobby("villagers.csv"))  
+print(all_names_by_hobby("villagers.csv"))  
 #print(all_data('villagers.csv')) 
 #print(find_motto('villagers.csv', 'Ismarji'))
+#print(find_likeminded_villagers('villagers.csv', 'Curt'))
